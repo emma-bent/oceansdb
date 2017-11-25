@@ -43,6 +43,8 @@ http://data.nodc.noaa.gov/thredds/fileServer/woa/WOA13/DATAv2/temperature/netcdf
 
 class Dataset_flex(object):
     def __init__(self, filename, **kwargs):
+        assert os.path.isfile(filename), "File does not exist: {}".format(
+                filename)
         self.ds = Dataset(filename, mode='r')
         if 'aliases' in kwargs:
             self.aliases = kwargs['aliases']
